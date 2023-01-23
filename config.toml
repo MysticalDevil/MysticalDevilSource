@@ -52,6 +52,7 @@ url = "/categories/"
 name = "About"
 weight = 50
 identifier = "about"
+url = "/about"
 
 
 [params]
