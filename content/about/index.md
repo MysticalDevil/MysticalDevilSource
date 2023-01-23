@@ -37,7 +37,7 @@ Hi，我是 DEvil😈，一名大四的 CS 本科生，一个纯粹的人，一�
 :meat_on_bone: 赞助
 
 - 微信支付
-  ![Wechat](/images/wechat_reward_qrcode.png)
+  <img src="/images/wechat_reward_qrcode.png" width="30%" height="30%" alt="Wechat QR Code"/>
 
 - 支付宝
-  ![Alipay](/images/alipay-qr-code.jpg)
+  <img src="/images/alipay-qr-code.jpg" width="30%" height="30%" alt="Alipay QR Code"/>
