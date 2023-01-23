@@ -65,9 +65,18 @@ since = "2023" # Site creation time          # 站点建立时间
 gitRepo = ""
 
 # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-logoTitle = "DEvil"                           # default: the title value    # 默认值: 上面设置的title值
-keywords = ["Hugo", "theme", "even"]
-description = "Hugo theme even example site."
+logoTitle = "DEvil" # default: the title value    # 默认值: 上面设置的title值
+keywords = [
+    "Hugo",
+    "theme",
+    "even",
+    "blog",
+    "mystical",
+    "devil",
+    "mysticaldevil",
+    "programming",
+]
+description = "MysticalDevil's Blog website, dirver by hugo."
 
 # paginate of archives, tags and categories             # 归档、标签、分类每页显示的文章数目，建议修改为一个较大的值
 archivePaginate = 50
@@ -91,10 +100,10 @@ autoCollapseToc = false # Auto expand and collapse toc                          
 fancybox = true         # see https://github.com/fancyapps/fancybox                 # 是否启用fancybox（图片可点击）
 
 # mathjax
-mathjax = false                   # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
-mathjaxEnableSingleDollar = false # 是否使用 $...$ 即可進行inline latex渲染
-mathjaxEnableAutoNumber = false   # 是否使用公式自动编号
-mathjaxUseLocalFiles = false      # You should install mathjax in `your-site/static/lib/mathjax`
+mathjax = true                   # see https://www.mathjax.org/                              # 是否使用mathjax（数学公式）
+mathjaxEnableSingleDollar = true # 是否使用 $...$ 即可進行inline latex渲染
+mathjaxEnableAutoNumber = false  # 是否使用公式自动编号
+mathjaxUseLocalFiles = false     # You should install mathjax in `your-site/static/lib/mathjax`
 
 postMetaInFooter = true # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
 linkToMarkDown = false  # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
@@ -183,9 +192,9 @@ sitePV = true
 pagePV = true
 
 [params.reward] # 文章打赏
-enable = false
-wechat = "/path/to/your/wechat-qr-code.png" # 微信二维码
-alipay = "/path/to/your/alipay-qr-code.png" # 支付宝二维码
+enable = true
+wechat = "static/wechat-qr-code.png" # 微信二维码
+alipay = "static/alipay-qr-code.png" # 支付宝二维码
 
 [params.social] # 社交链接
 a-email = "jinpeng7981@outlook.com"
