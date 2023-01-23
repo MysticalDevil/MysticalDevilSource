@@ -193,8 +193,8 @@ pagePV = true
 
 [params.reward] # 文章打赏
 enable = true
-wechat = "static/wechat-qr-code.png" # 微信二维码
-alipay = "static/alipay-qr-code.png" # 支付宝二维码
+wechat = "static/images/wechat-qr-code.png" # 微信二维码
+alipay = "static/images/alipay-qr-code.png" # 支付宝二维码
 
 [params.social] # 社交链接
 a-email = "jinpeng7981@outlook.com"
