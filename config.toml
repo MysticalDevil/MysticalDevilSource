@@ -155,8 +155,8 @@ clientId = ""     # Your client ID
 clientSecret = "" # Your client secret
 
 [params.utterances] # https://utteranc.es/
-owner = "MysticalDevil"     # Your GitHub ID
-repo = "mystical.github.io" # The repo to store comments
+owner = "MysticalDevil"          # Your GitHub ID
+repo = "mysticaldevil.github.io" # The repo to store comments
 
 [params.gitalk] # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
 owner = ""        # Your GitHub ID
@@ -193,8 +193,8 @@ pagePV = true
 
 [params.reward] # 文章打赏
 enable = true
-wechat = "static/images/wechat-qr-code.png" # 微信二维码
-alipay = "static/images/alipay-qr-code.png" # 支付宝二维码
+wechat = "/images/wechat-reward-qrcode.png" # 微信二维码
+alipay = "/images/alipay-reward-qrcode.png" # 支付宝二维码
 
 [params.social] # 社交链接
 a-email = "jinpeng7981@outlook.com"
