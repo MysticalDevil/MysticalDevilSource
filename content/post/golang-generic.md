@@ -195,10 +195,10 @@ var s WowStruct[int, []int] = {
    ```go
    // error, T *int 会被编译器误认为是表达式 T 乘以 int，而不是 int 指针
    type NewType[T *int] []T
-   
+
    // error, 这里的 * 会被认为是乘法符号，| 会被认为时按位或
    type NewType[T *int | float64] []T
-   
+
    // error
    type NewType[T (int)] []T
    ```
@@ -208,7 +208,7 @@ var s WowStruct[int, []int] = {
    ```go
    type NewType[T interface{*int}] []T
    type NewType[T interface{*int|*float64}] []T
-   
+
    // 类型约束只有一个类型，可以添加一个逗号消除歧义
    type NewType[T *int,] []T
    // error，类型约束有多个时加逗号无法消除歧义
@@ -367,7 +367,7 @@ func FooFunc[T int | float32 | float64](a, b T) {
     fn2 := func(i, j T) T {
         return i*2 + j *2
     }
-    
+
     fn2(a, b)
 }
 ```
@@ -438,7 +438,7 @@ type Uint interface {
     uint | uint8 | uint16 | uint32 | uint64
 }
 
-type Slice[T Int | Uint] []T	
+type Slice[T Int | Uint] []T
 ```
 
 在接口中也能直接组合其他接口，如下
@@ -533,7 +533,7 @@ type ReadWrite interface {
 
 ```go
 type IntUint interface {
-    int | int8| int16 | int32 | int64 | uint | uint8 | uint16| uint32 | uint64 
+    int | int8| int16 | int32 | int64 | uint | uint8 | uint16| uint32 | uint64
 }
 ```
 
@@ -543,7 +543,7 @@ type IntUint interface {
 
 ```go
 type AllInt interface {
-     int | int8| int16 | int32 | int64 | uint | uint8 | uint16| uint32 | uint64 
+     int | int8| int16 | int32 | int64 | uint | uint8 | uint16| uint32 | uint64
 }
 
 type Uint interface {
@@ -674,7 +674,7 @@ type Float interface {
 ```go
 type ReadWriter interface {
     ~string | ~[]rune
-    
+
     Read(p []byte) (n int, err error)
     Write(p []byte) (n int, err error)
 }
@@ -723,7 +723,7 @@ func (b BytesReadWriter) Read(p []byte) (n int, err error) {
   type NewError interface { // 基本接口，只有方法
       Error() string
   }
-  
+
   var err NewError = fmt.Errorf("new error")
   ```
 
@@ -745,7 +745,7 @@ type Uint interface {
 
 type ReadWriter interface {
     ~string | ~[]rune
-    
+
     Read(p []byte) (n int, err error)
     Write(p []byte) (n int, err error)
 }
@@ -775,7 +775,7 @@ type DataProcessor[T any] interface {
 
 type DataProcessor2[T any] interface {
     int | ~struct{ Data any }
-    
+
     Process(data T) (newData T)
     Save(data T) error
 }
@@ -821,7 +821,7 @@ DataProcessor2[string]
 
 type DataProcessor2[string] interface {
     int | ~struct{ Data any }
-    
+
     Process(data string) (newData string)
     Save(data string) error
 }
@@ -863,14 +863,14 @@ var processor DataProcessor2[string]
 // right，实例化后的DataProcessor2可以用于泛型的类型约束
 type stringProcessor interface {
     DataProcessor2[string]
-    
+
     PrintString()
 }
 
 // error，带方法的一般接口不能作为类型并集的成员
 type StringProcessor interface {
     DataProcessor2[string] | DataProcessor2[[]byte]
-    
+
     PrintString()
 }
 ```
@@ -883,7 +883,7 @@ type StringProcessor interface {
 
    ```go
    type NewInt int
-   
+
    // error，NewInt 和 ~int 有相交的部分
    type _ interface {
        ~int | NewInt
@@ -894,17 +894,17 @@ type StringProcessor interface {
 
    ```go
    type NewInt int
-   
+
    // right
    type _ interface {
        ~int | interface { NewInt }
    }
-   
+
    // right
    type _ interface {
        interface{ ~int } | NewInt
    }
-   
+
    // right
    type _ interface {
        interface{ ~int } | interface { Newint }
@@ -917,7 +917,7 @@ type StringProcessor interface {
    type NewInf[T ~int | ~string] interface {
        ~float32 | T // error，T 是类型形参
    }
-   
+
    type NewInf[T ~int | ~string] interface {
        T // error
    }
@@ -929,15 +929,15 @@ type StringProcessor interface {
    type Bad interface {
        Bad // error，接口不能并入自身
    }
-   
+
    type Bad2 interface {
        Bad1
    }
-   
+
    type Bad1 interface {
        Bad2 // error，接口 Bad1 通过 Bad2 间接并入了自身
    }
-   
+
    type Bad3 interface {
        ~int | ~string | Bad3 // error
    }
@@ -949,15 +949,15 @@ type StringProcessor interface {
    type Ok interface {
        comparable // right，只有一个类型约束时可以使用 comparable
    }
-   
+
    type Bad1 interface {
        []int | comparabel //error，直接并入 comparabel
    }
-   
+
    type CmpInf interface {
        comparable
    }
-   
+
    type Bad2 interface {
        chan int | CmpInf // error，间接并入 comparable
    }
@@ -972,14 +972,14 @@ type StringProcessor interface {
    type _ interface {
        ~int | ~string | error // error，error 是带方法的接口(基本接口)
    }
-   
+
    type DataProcessor[T any] interface {
        ~string | ~[]byte
-       
+
        Process(data T) (newData T)
        Save(data T) error
    }
-   
+
    // error，实例化后的 DataProcessor[string] 是一般接口，不能写入类型并集
    type _ interface {
        ~int | ~string | Dataprocessor[string]
@@ -991,3 +991,7 @@ type StringProcessor interface {
 以上就是 Go 语言官方在 1.18 引入的新特性泛型。
 
 > 泛型并不取代1.18之前利用接口+反射的方式实现的动态类型，泛型的适用场景是：当你需要对不同类型书写相同逻辑时，适用泛型是简化代码的最好办法（比如写一些数据结构，堆、栈、链表等）
+
+## 参考
+
+- [1] [Go 1.18 泛型全面讲解：一篇讲清泛型的全部](https://segmentfault.com/a/1190000041634906)
