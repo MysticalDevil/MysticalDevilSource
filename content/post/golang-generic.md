@@ -3,12 +3,12 @@ title: "Go 新特性 -- 泛型"
 date: 2023-01-23T19:50:59+08:00
 categories : [
 "Go",
-"Programming",
-“Notes"
 ]
 tags : [
 "Go",
-"Generic"
+"Generic",
+"Notes",
+"Programming",
 ]
 ---
 
