@@ -1,5 +1,5 @@
 ---
-title: "CSS 学习笔记 -- 布局概念 盒模型"
+title: "CSS 学习笔记 -- 盒模型"
 date: 2023-01-23T19:50:59+08:00
 categories : [
 "CSS",
@@ -11,7 +11,7 @@ tags : [
 ]
 ---
 
-## CSS 布局概念
+## CSS 盒模型
 
 ### 文档流（normal flow）
 
@@ -193,3 +193,78 @@ ul {
 `normalize.css` 对默认样式进行了统一
 
 `reset.css` 直接去除了所有默认样式
+
+### 练习小记
+
+- 要让文字能够在父元素中垂直居中，只需将父元素的`line-height`设置为一个和父元素`height`相等的值
+
+### 盒子大小
+
+默认情况下，盒子的**可见框**的大小由内容区、内边距和边框共同决定
+
+在盒子模型中可以使用`box-sizing`来设置盒模型的计算方式，可选值如下
+
+- `content-box` 默认值，宽度和高度用来设置内容区的大小
+- `border-box` 高度和宽度用来设置整个盒子的可见框的大小
+
+### 轮廓 阴影 圆角
+
+轮廓 `outline` 用来设置盒模型的轮廓线，用法和 `border` 相同，但是不会影响盒模型可见框的大小
+
+阴影 `box-shadow` 用来设置元素的阴影效果，不会影响页面布局；默认在元素的正下方，使用时需要添加偏移量(x, y)，还有第三个值为模糊半径
+
+```css
+.box {
+    width: 200px;
+    height: 200px;
+    background: cyan;
+    border: 5px solid red;
+    border-radius: 20px;
+    box-shadow: black 10px 10px;
+}
+```
+
+圆角 `border-radius` 用来设置盒子的角的半径大小，可以使用相对值和绝对值
+
+- `border-top/bottom-left-right` 元素各个角，可以接受单个值，此时为圆形圆角；也可以接受两个值，此时为椭圆圆角
+
+- `background-clip` 
+
+- `border-radius` 可以使用 `\` 来设置椭圆圆角
+
+  ```css
+  {
+      /* The syntax of the first radius allows one to four values */
+      /* Radius is set for all 4 sides */
+      border-radius: 10px;
+  
+      /* top-left-and-bottom-right | top-right-and-bottom-left */
+      border-radius: 10px 5%;
+  
+      /* top-left | top-right-and-bottom-left | bottom-right */
+      border-radius: 2px 4px 2px;
+  
+      /* top-left | top-right | bottom-right | bottom-left */
+      border-radius: 1px 0 3px 4px;
+  
+      /* The syntax of the second radius allows one to four values */
+      /* (first radius values) / radius */
+      border-radius: 10px / 20px;
+  
+      /* (first radius values) / top-left-and-bottom-right | top-right-and-bottom-left */
+      border-radius: 10px 5% / 20px 30px;
+  
+      /* (first radius values) / top-left | top-right-and-bottom-left | bottom-right */
+      border-radius: 10px 5px 2em / 20px 25px 30%;
+  
+      /* (first radius values) / top-left | top-right | bottom-right | bottom-left */
+      border-radius: 10px 5% / 20px 25em 30px 35em;
+  
+      /* Global values */
+      border-radius: inherit;
+      border-radius: initial;
+      border-radius: revert;
+      border-radius: revert-layer;
+      border-radius: unset;
+  }
+  ```
