@@ -5,7 +5,7 @@ categories : [
 "Algorithm",
 ]
 tags : [
-"Algorithm"
+"Algorithm",
 "Notes",
 "Programming",
 ]
